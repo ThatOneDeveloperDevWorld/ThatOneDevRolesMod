@@ -1,3 +1,0 @@
-﻿here to ensure git doesn't delete empty folders
-
-local packages are stored in this directory
