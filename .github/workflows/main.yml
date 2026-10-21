@@ -35,18 +35,18 @@ jobs:
         if: github.ref_type != 'tag'
         with:
           name: ThatOneDevRoles.dll
-          path: ThatOneDevRoles/bin/Release/ThatOneDevRoles.dll # i hope this works
+          path: ThatOneDevRoles/bin/Release/**/ThatOneDevRoles.dll
           retention-days: 7
 
       - uses: actions/upload-artifact@v4
         if: github.ref_type == 'tag'
         with:
           name: ThatOneDevRoles.dll
-          path: ThatOneDevRoles/bin/Publish/ThatOneDevRoles.dll
+          path: ThatOneDevRoles/bin/Publish/**/ThatOneDevRoles.dll
           retention-days: 7
           
       - uses: softprops/action-gh-release@v2
         if: github.ref_type == 'tag'
         with:
           draft: true
-          files: ThatOneDevRoles/bin/Publish/ThatOneDevRoles.dll
+          files: ThatOneDevRoles/bin/Publish/**/ThatOneDevRoles.dll
