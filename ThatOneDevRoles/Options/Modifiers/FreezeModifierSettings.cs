@@ -2,7 +2,7 @@
 using MiraAPI.GameOptions;
 using MiraAPI.GameOptions.Attributes;
 
-namespaceThatOneDevRoles.Options.Modifiers;
+namespace ThatOneDevRoles.Options.Modifiers;
 
 public class FreezeModifierSettings : AbstractOptionGroup<FreezeModifier>
 {
