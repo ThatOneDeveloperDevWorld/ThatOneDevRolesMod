@@ -4,7 +4,7 @@ namespace ThatOneDevRoles;
 
 public static class ThatOneDevRolesAssets
 {
-    public static LoadableResourceAsset FreezerButton { get; } = new("ThatOneDevRoles.Resources.ExampleButton.png");
+    public static LoadableResourceAsset FreezeButton { get; } = new("ThatOneDevRoles.Resources.ExampleButton.png");
     public static LoadableResourceAsset CallMeetingButton { get; } = new("ThatOneDevRoles.Resources.CallMeeting.png");
 
     // Credit to EpicHorrors for the teleport button asset.

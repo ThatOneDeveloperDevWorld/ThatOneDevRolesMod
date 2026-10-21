@@ -15,7 +15,7 @@ public class FreezerRole : ImpostorRole, ICustomRole
     {
         Icon = MiraAssets.ImpostorFile,
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(MiraAssets.ImpostorFile.LoadAsset(), "ThatOneDevRoles.Role.Impostor.Freezer"),
-        OptionsScreenshot = ExampleAssets.Banner,
+        OptionsScreenshot = ThatOneDevRolesAssets.Banner,
         MaxRoleCount = 2,
     };
 }
