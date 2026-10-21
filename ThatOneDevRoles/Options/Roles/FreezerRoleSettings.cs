@@ -1,4 +1,4 @@
-﻿usingThatOneDevRoles.Roles;
+﻿using ThatOneDevRoles.Roles;
 using MiraAPI.GameOptions;
 using MiraAPI.GameOptions.Attributes;
 using MiraAPI.Utilities;
