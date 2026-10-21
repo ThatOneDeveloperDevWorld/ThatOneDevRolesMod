@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\MiraAPI\MiraAPI.csproj" />
+		<ProjectReference Include="..\MiraAPI\MiraAPI\MiraAPI.csproj" />
 	</ItemGroup>
 
 	 <ItemGroup>
