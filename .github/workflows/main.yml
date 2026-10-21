@@ -28,12 +28,14 @@ jobs:
         uses: cake-build/cake-action@v3
         with:
           verbosity: Diagnostic
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v4
         if: github.ref_type != 'tag'
         with:
           name: ThatOneDevRoles.dll
-          path: ThatOneDevRoles/bin/Release/ThatOneDevRoles.dll
+          path: ThatOneDevRoles/bin/Release/ThatOneDevRoles.dll # i hope this works
           retention-days: 7
 
       - uses: actions/upload-artifact@v4
