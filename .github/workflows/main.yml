@@ -32,7 +32,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: github.ref_type != 'tag'
         with:
-          name: TownOfUsMira.dll
+          name: ThatOneDevRoles.dll
           path: ThatOneDevRoles/bin/Release/ThatOneDevRoles.dll
           retention-days: 7
 
@@ -40,7 +40,7 @@ jobs:
         if: github.ref_type == 'tag'
         with:
           name: ThatOneDevRoles.dll
-          path: ThstOneDevRoles/bin/Publish/ThatOneDevRoles.dll
+          path: ThatOneDevRoles/bin/Publish/ThatOneDevRoles.dll
           retention-days: 7
           
       - uses: softprops/action-gh-release@v2

@@ -27,7 +27,8 @@ Task("Build")
         settings.MSBuildSettings.VersionSuffix = "ci." + buildId;
     }
 
-    DotNetBuild(".", settings);
+    // Compiles exclusively your mod project
+    DotNetBuild("ThatOneDevRoles/ThatOneDevRoles.csproj", settings);
 });
 
 RunTarget(target);

@@ -1,0 +1,18 @@
+ <Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Version>1.0.0</Version>
+		<Description>VERY COOL AWESOME MOD FOR AMONGUS</Description>
+		<Authors>ThatOneDev</Authors>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MiraAPI\MiraAPI.csproj" />
+	</ItemGroup>
+
+	 <ItemGroup>
+		 <EmbeddedResource Include="Resources\**\*.*" />
+	 </ItemGroup>
+
+	<Import Project="..\AmongUs.props" />
+</Project>
