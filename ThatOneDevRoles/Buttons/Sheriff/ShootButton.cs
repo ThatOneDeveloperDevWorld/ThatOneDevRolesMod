@@ -11,12 +11,10 @@ public class ShootButton : CustomActionButton<PlayerControl>
 {
     public override string Name => "button.shoot";
 
-    // Standard 30 second cooldown or bind to a Sheriff options group setting
     public override float Cooldown => 30f; 
     public override bool PauseTimerInVent => true;
 
-    // Uses default kill asset or swap with your custom loaded sprite asset
-    public override LoadableAsset<Sprite> Sprite => MiraAssets.KillButton; 
+    public override LoadableAsset<Sprite> Sprite => MiraAssets.ImpostorFile; 
     public override MiraKeybind? Keybind => MiraGlobalKeybinds.PrimaryAbility;
 
     protected override void OnClick()
@@ -25,16 +23,13 @@ public class ShootButton : CustomActionButton<PlayerControl>
 
         PlayerControl sheriff = PlayerControl.LocalPlayer;
 
-        // Check target team alignment
-        if (Target.Data.Role.IsImpostor || Target.Is(ModdedRoleTeams.Impostor))
+        if (Target.Data.IsImpostor)
         {
-            // Target is Impostor: Eliminate the target
-            sheriff.RpcMurderPlayer(Target);
+            sheriff.MurderPlayer(Target);
         }
         else
         {
-            // Target is Crewmate: Misfire and eliminate Sheriff
-            sheriff.RpcMurderPlayer(sheriff);
+            sheriff.MurderPlayer(sheriff);
         }
     }
 
