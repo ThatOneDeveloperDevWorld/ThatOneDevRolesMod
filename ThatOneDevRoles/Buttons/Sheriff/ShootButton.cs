@@ -23,13 +23,18 @@ public class ShootButton : CustomActionButton<PlayerControl>
 
         PlayerControl sheriff = PlayerControl.LocalPlayer;
 
-        if (Target.Data.IsImpostor)
+        // Check if target is an impostor via Role.IsImpostor on NetworkedPlayerInfo
+        bool isTargetImpostor = Target.Data.Role != null && Target.Data.Role.IsImpostor;
+
+        if (isTargetImpostor)
         {
-            sheriff.MurderPlayer(Target);
+            // Target is Impostor: Eliminate the target
+            sheriff.MurderPlayer(Target, MurderResultFlags.Succeeded);
         }
         else
         {
-            sheriff.MurderPlayer(sheriff);
+            // Target is Crewmate: Misfire and eliminate the Sheriff
+            sheriff.MurderPlayer(sheriff, MurderResultFlags.Succeeded);
         }
     }
 
