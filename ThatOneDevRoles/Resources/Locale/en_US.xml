@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <!-- Sheriff Role Localization -->
+    <string name="ThatOneDevRoles.Role.Crewmate.Sheriff">Sheriff</string>
+    <string name="ThatOneDevRoles.Role.Crewmate.Sheriff.IntroBlurb">shoot the impostors.</string>
+    <string name="ThatOneDevRoles.Role.Crewmate.Sheriff.MedDescription">shoot impostors, if you shoot a crewmate, you die.</string>
+    <string name="ThatOneDevRoles.Role.Crewmate.Sheriff.TabDescription">Eliminate Impostors with your Shoot ability.</string>
+    <string name="ThatOneDevRoles.Role.Crewmate.Sheriff.WikiDescription">the sheriff is a crewmate role that has a gun, they can shoot someone, if they are impostor, the sheriff lives and the impostor dies. If they are crewmate, the sheriff dies instead.</string>
+    <string name="button.shoot">Shoot</string>
+</resources>

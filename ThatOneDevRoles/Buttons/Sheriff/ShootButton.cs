@@ -14,7 +14,7 @@ public class ShootButton : CustomActionButton<PlayerControl>
     public override float Cooldown => 30f; 
     public override bool PauseTimerInVent => true;
 
-    public override LoadableAsset<Sprite> Sprite => MiraAssets.ImpostorFile; 
+    public override LoadableAsset<Sprite> Sprite => ThatOneDevRolesAssets.ShootButton; 
     public override MiraKeybind? Keybind => MiraGlobalKeybinds.PrimaryAbility;
 
     protected override void OnClick()
@@ -28,12 +28,10 @@ public class ShootButton : CustomActionButton<PlayerControl>
 
         if (isTargetImpostor)
         {
-            // Target is Impostor: Eliminate the target
             sheriff.MurderPlayer(Target, MurderResultFlags.Succeeded);
         }
         else
         {
-            // Target is Crewmate: Misfire and eliminate the Sheriff
             sheriff.MurderPlayer(sheriff, MurderResultFlags.Succeeded);
         }
     }

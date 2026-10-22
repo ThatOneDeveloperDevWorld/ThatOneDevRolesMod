@@ -14,9 +14,12 @@ public class SheriffRole : CrewmateRole, ICustomRole
 
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {
-        Icon = MiraAssets.CrewmateFile,
-        IconTmp = TmpSpriteUtils.CreateSpriteAsset(MiraAssets.CrewmateFile.LoadAsset(), "ThatOneDevRoles.Role.Crewmate.Sheriff"),
+        Icon = ThatOneDevRolesAssets.SheriffIcon,
+        IconTmp = TmpSpriteUtils.CreateSpriteAsset(
+            ThatOneDevRolesAssets.SheriffIcon.LoadAsset(), 
+            "ThatOneDevRoles.Role.Crewmate.Sheriff"
+        ),
         OptionsScreenshot = ThatOneDevRolesAssets.Banner,
-        MaxRoleCount = 1,
+        MaxRoleCount = 15,
     };
 }
