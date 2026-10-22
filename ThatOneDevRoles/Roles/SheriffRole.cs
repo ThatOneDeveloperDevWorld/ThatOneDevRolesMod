@@ -1,6 +1,5 @@
 using MiraAPI.Roles;
 using MiraAPI.Utilities.Assets;
-using ThatOneDevRoles.Buttons.Sheriff;
 using UnityEngine;
 
 namespace ThatOneDevRoles.Roles;
@@ -19,6 +18,5 @@ public class SheriffRole : CrewmateRole, ICustomRole
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(MiraAssets.CrewmateFile.LoadAsset(), "ThatOneDevRoles.Role.Crewmate.Sheriff"),
         OptionsScreenshot = ThatOneDevRolesAssets.Banner,
         MaxRoleCount = 1,
-        CustomButtons = new[] { typeof(ShootButton) }
     };
 }
