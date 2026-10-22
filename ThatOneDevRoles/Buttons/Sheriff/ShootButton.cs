@@ -1,39 +1,60 @@
-﻿using MiraAPI.Hud.Buttons;
-using MiraAPI.Roles;
-using ThatOneDevRoles.Roles;
+﻿using ThatOneDevRoles.Roles;
+using MiraAPI.Hud;
+using MiraAPI.Keybinds;
+using MiraAPI.Utilities;
+using MiraAPI.Utilities.Assets;
 using UnityEngine;
 
 namespace ThatOneDevRoles.Buttons.Sheriff;
 
-public class ShootButton : TargetCustomButton<SheriffRole>
+public class ShootButton : CustomActionButton<PlayerControl>
 {
-    public override string Text => "Shoot";
-    public override Sprite Sprite => MiraAssets.KillButton;
-    public override float Cooldown => 30f;
+    public override string Name => "button.shoot";
 
-    public override bool CouldUse()
+    // Standard 30 second cooldown or bind to a Sheriff options group setting
+    public override float Cooldown => 30f; 
+    public override bool PauseTimerInVent => true;
+
+    // Uses default kill asset or swap with your custom loaded sprite asset
+    public override LoadableAsset<Sprite> Sprite => MiraAssets.KillButton; 
+    public override MiraKeybind? Keybind => MiraGlobalKeybinds.PrimaryAbility;
+
+    protected override void OnClick()
     {
-        return base.CouldUse() && PlayerControl.LocalPlayer != null && !PlayerControl.LocalPlayer.Data.IsDead;
-    }
+        if (Target == null || Target.Data == null || Target.Data.IsDead) return;
 
-    public override void OnClick()
-    {
-        if (CurrentTarget == null) return;
-
-        PlayerControl target = CurrentTarget;
         PlayerControl sheriff = PlayerControl.LocalPlayer;
 
-        if (target.Data == null || target.Data.IsDead) return;
-
-        if (target.Data.Role.IsImpostor || target.Is(ModdedRoleTeams.Impostor))
+        // Check target team alignment
+        if (Target.Data.Role.IsImpostor || Target.Is(ModdedRoleTeams.Impostor))
         {
-            target.MurderPlayer(target);
+            // Target is Impostor: Eliminate the target
+            sheriff.RpcMurderPlayer(Target);
         }
         else
         {
-            sheriff.MurderPlayer(sheriff);
+            // Target is Crewmate: Misfire and eliminate Sheriff
+            sheriff.RpcMurderPlayer(sheriff);
         }
+    }
 
-        ResetCooldown();
+    public override PlayerControl? GetTarget()
+    {
+        return PlayerControl.LocalPlayer.GetClosestPlayer(true, Distance);
+    }
+
+    public override void SetOutline(bool active)
+    {
+        Target?.cosmetics.SetOutline(active, new Il2CppSystem.Nullable<Color>(Palette.CrewmateBlue));
+    }
+
+    public override bool IsTargetValid(PlayerControl? target)
+    {
+        return target != null && !target.Data.IsDead;
+    }
+
+    public override bool Enabled(RoleBehaviour? role)
+    {
+        return role is SheriffRole;
     }
 }
