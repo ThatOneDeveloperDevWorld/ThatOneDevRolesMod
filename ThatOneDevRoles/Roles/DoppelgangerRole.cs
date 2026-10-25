@@ -19,7 +19,7 @@ public class DoppelgangerRole : ImpostorRole, ICustomRole
             ThatOneDevRolesAssets.DoppelgangerIcon.LoadAsset() ?? MiraAssets.ImpostorFile.LoadAsset(),
             "ThatOneDevRoles.Role.Impostor.Doppelganger"
         ),
-        OptionsScreenshot = ThatOneDevRolesAssets.Banner,
+        OptionsScreenshot = ThatOneDevRolesAssets.TODRCREWicon,
         MaxRoleCount = 15,
     };
 

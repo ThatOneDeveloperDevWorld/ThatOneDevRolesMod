@@ -14,12 +14,12 @@ public class SheriffRole : CrewmateRole, ICustomRole
 
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {
-        Icon = ThatOneDevRolesAssets.SheriffIcon,
+        Icon = ThatOneDevRolesAssets.Sherifficon,
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(
-            ThatOneDevRolesAssets.SheriffIcon.LoadAsset(), 
+            ThatOneDevRolesAssets.TODRCREWicon.LoadAsset(), 
             "ThatOneDevRoles.Role.Crewmate.Sheriff"
         ),
-        OptionsScreenshot = ThatOneDevRolesAssets.Banner,
+        OptionsScreenshot = ThatOneDevRolesAssets.TODRCREWicon,
         MaxRoleCount = 15,
     };
 }
