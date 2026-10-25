@@ -14,7 +14,7 @@ public class SheriffRole : CrewmateRole, ICustomRole
 
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {
-        Icon = ThatOneDevRolesAssets.Sherifficon,
+        Icon = ThatOneDevRolesAssets.SheriffIcon,
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(
             ThatOneDevRolesAssets.TODRCREWicon.LoadAsset(), 
             "ThatOneDevRoles.Role.Crewmate.Sheriff"
