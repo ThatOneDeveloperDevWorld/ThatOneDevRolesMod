@@ -1,3 +1,4 @@
+using HarmonyLib;
 using MiraAPI.Roles;
 using MiraAPI.Utilities.Assets;
 using UnityEngine;
@@ -19,25 +20,33 @@ public class DoppelgangerRole : ImpostorRole, ICustomRole
             ThatOneDevRolesAssets.DoppelgangerIcon.LoadAsset() ?? MiraAssets.ImpostorFile.LoadAsset(),
             "ThatOneDevRoles.Role.Impostor.Doppelganger"
         ),
-        OptionsScreenshot = ThatOneDevRolesAssets.TODRCREWicon,
-        MaxRoleCount = 15,
+        OptionsScreenshot = ThatOneDevRolesAssets.Banner,
+        MaxRoleCount = 1,
     };
+}
 
-    public override void OnKill(PlayerControl killer, PlayerControl target)
+// Harmony Patch to handle the identity swap exclusively when a Doppelganger kills
+[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.MurderPlayer))]
+public static class DoppelgangerKillPatch
+{
+    public static void Postfix(PlayerControl __instance, PlayerControl target, MurderResultFlags __result)
     {
-        base.OnKill(killer, target);
+        // 1. Only run if the murder attempt succeeded
+        if (!__result.HasFlag(MurderResultFlags.Succeeded)) return;
+        if (__instance == null || target == null) return;
 
-        if (killer == null || target == null) return;
+        // 2. EXCLUSIVE CHECK: Only run if the killer is a Doppelganger
+        if (__instance.Data?.Role is not DoppelgangerRole) return;
 
-        var killerData = killer.Data;
+        var killerData = __instance.Data;
         var targetData = target.Data;
-
         if (killerData == null || targetData == null) return;
 
-        var savedKillerDefaultOutfit = killerData.DefaultOutfit;
-        
-        killer.SetOutfit(targetData.DefaultOutfit);
+        // 3. Swap visual cosmetics
+        var savedKillerOutfit = killerData.DefaultOutfit;
+        var savedTargetOutfit = targetData.DefaultOutfit;
 
-        target.SetOutfit(savedKillerDefaultOutfit);
+        __instance.SetOutfit(savedTargetOutfit);
+        target.SetOutfit(savedKillerOutfit);
     }
 }
