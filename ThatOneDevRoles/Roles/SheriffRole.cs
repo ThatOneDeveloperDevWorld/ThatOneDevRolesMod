@@ -16,7 +16,7 @@ public class SheriffRole : CrewmateRole, ICustomRole
     {
         Icon = ThatOneDevRolesAssets.SheriffIcon,
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(
-            ThatOneDevRolesAssets.TODRCREWicon.LoadAsset(), 
+            ThatOneDevRolesAssets.SheriffIcon.LoadAsset(), 
             "ThatOneDevRoles.Role.Crewmate.Sheriff"
         ),
         OptionsScreenshot = ThatOneDevRolesAssets.TODRCREWicon,
