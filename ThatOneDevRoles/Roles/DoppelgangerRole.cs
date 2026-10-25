@@ -25,28 +25,24 @@ public class DoppelgangerRole : ImpostorRole, ICustomRole
     };
 }
 
-// Harmony Patch to handle the identity swap exclusively when a Doppelganger kills
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.MurderPlayer))]
 public static class DoppelgangerKillPatch
 {
     public static void Postfix(PlayerControl __instance, PlayerControl target, MurderResultFlags __result)
     {
-        // 1. Only run if the murder attempt succeeded
         if (!__result.HasFlag(MurderResultFlags.Succeeded)) return;
         if (__instance == null || target == null) return;
-
-        // 2. EXCLUSIVE CHECK: Only run if the killer is a Doppelganger
         if (__instance.Data?.Role is not DoppelgangerRole) return;
 
         var killerData = __instance.Data;
         var targetData = target.Data;
         if (killerData == null || targetData == null) return;
 
-        // 3. Swap visual cosmetics
         var savedKillerOutfit = killerData.DefaultOutfit;
         var savedTargetOutfit = targetData.DefaultOutfit;
 
-        __instance.SetOutfit(savedTargetOutfit);
-        target.SetOutfit(savedKillerOutfit);
+        // Pass the required PlayerOutfitType argument to SetOutfit
+        __instance.SetOutfit(savedTargetOutfit, target.CurrentOutfitType);
+        target.SetOutfit(savedKillerOutfit, __instance.CurrentOutfitType);
     }
 }
