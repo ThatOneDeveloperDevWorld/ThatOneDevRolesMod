@@ -19,7 +19,7 @@ public class SheriffRole : CrewmateRole, ICustomRole
             ThatOneDevRolesAssets.SheriffIcon.LoadAsset(), 
             "ThatOneDevRoles.Role.Crewmate.Sheriff"
         ),
-        OptionsScreenshot = ThatOneDevRolesAssets.TODRCREWicon,
+        OptionsScreenshot = ThatOneDevRolesAssets.BannerCrew,
         MaxRoleCount = 15,
     };
 }
