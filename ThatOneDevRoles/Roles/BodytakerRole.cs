@@ -15,7 +15,7 @@ public class BodytakerRole : ImpostorRole, ICustomRole
 
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {
-        Icon = ThatOneDevRolesAssets.TODRIMPIcon,
+        Icon = ThatOneDevRolesAssets.TODRIMPicon,
         IconTmp = TmpSpriteUtils.CreateSpriteAsset(
             ThatOneDevRolesAssets.TODRIMPicon.LoadAsset() ?? MiraAssets.ImpostorFile.LoadAsset(),
             "ThatOneDevRoles.Role.Impostor.Bodytaker"
